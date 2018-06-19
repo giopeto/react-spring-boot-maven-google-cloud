@@ -12,6 +12,12 @@
     <artifactId>api</artifactId>
     <packaging>war</packaging>
 
+    <properties>
+        <com.google.appengine.version>1.9.64</com.google.appengine.version>
+        <com.googlecode.objectify.version>6.0</com.googlecode.objectify.version>
+        <javax.servlet.version>3.1.0</javax.servlet.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -25,7 +31,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>${javax.servlet.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -39,6 +45,12 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.objectify</groupId>
+            <artifactId>objectify</artifactId>
+            <version>${com.googlecode.objectify.version}</version>
         </dependency>
 
     </dependencies>

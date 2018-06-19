@@ -1,22 +1,26 @@
 package domain;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
 public class Item {
 
-	private int id;
+	@Id private Long id;
 	private String name;
 
 	public Item() {}
 
-	public Item(int id, String name) {
+	public Item(Long id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
