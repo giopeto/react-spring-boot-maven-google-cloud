@@ -4,7 +4,6 @@ import cache.ItemsCache;
 import com.googlecode.objectify.ObjectifyService;
 import domain.Item;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +22,7 @@ public class ItemsServiceImpl implements ItemsService {
 	@Override
 	public List getItems() {
 		if (itemsCache.getItems().isEmpty()) {
-			ObjectifyService.ofy().load().type(Item.class);
+			itemsCache.setItems(ObjectifyService.ofy().load().type(Item.class).list());
 		}
 
 		return itemsCache.getItems();
@@ -31,8 +30,8 @@ public class ItemsServiceImpl implements ItemsService {
 
 	@Override
 	public Item setItem(Item item) {
-		itemsCache.setItems(item);
 		ObjectifyService.ofy().save().entity(item).now();
+		itemsCache.setItem(item);
 		return item;
 	}
 }

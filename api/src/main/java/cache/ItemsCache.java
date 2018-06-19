@@ -15,8 +15,13 @@ public class ItemsCache {
 		return items;
 	}
 
-	public List<Item> setItems(Item item) {
+	public List<Item> setItem(Item item) {
 		items.add(item);
 		return items;
 	}
+
+	public void setItems(List<Item> items) {
+		items.forEach(item -> setItem(item));
+	}
+
 }

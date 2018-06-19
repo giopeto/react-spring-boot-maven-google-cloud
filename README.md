@@ -1,8 +1,22 @@
 # Spring boot react gcloud
-===========================
 
-How to deploy
------
+> SpringBoot, React/Redux application 
+
+## Install
+1. `git clone https://github.com/giopeto/react-spring-boot-maven-google-cloud.git`
+2. `mvn clean install`
+
+## Run on localhost
+
+- Change ITEMS_URL in ui/client/src/items/index.js to 'http://localhost:8080/items'
+
+- install datastore emulator: [Running the Cloud Datastore Emulator](https://cloud.google.com/datastore/docs/tools/datastore-emulator)
+	- Command 'gcloud beta emulators datastore env-init' only print the variables to console. You need to manually execute them.
+
+- Run 'gcloud beta emulators datastore start' in terminal to start the datastore emulator
+
+## Deploy
+
 - cd to project
 
 mvn clean install
@@ -25,6 +39,6 @@ gcloud app browse
 
 mvn appengine:deploy
 
-Link to project
------
-[https://react-spring-boot-maven-gcloud.appspot.com](https://react-spring-boot-maven-gcloud.appspot.com/)
+## Live preview
+
+- [https://react-spring-boot-maven-gcloud.appspot.com](https://react-spring-boot-maven-gcloud.appspot.com/)

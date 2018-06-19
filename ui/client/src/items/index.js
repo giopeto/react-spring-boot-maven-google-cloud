@@ -1,4 +1,5 @@
 export const ITEMS_URL = 'https://react-spring-boot-maven-gcloud.appspot.com/items';
+//export const ITEMS_URL = 'http://localhost:8080/items';
 
 // Types
 export const ADD_ITEM = 'ADD_ITEM';
@@ -32,7 +33,7 @@ const itemReducers = (state = initialState, action) => {
             return Object.assign({}, state, {...action, isLoading: false});
         case ADD_ITEM:
             console.log('ADD_ITEM: ', state);
-            console.log('ADD_ITEM: ', { ...state, items: [...state.items, action.payload] });
+            console.log('ADD_ITEM: ', {...state, items: [...state.items, action.payload]});
             return {...state, items: [...state.items, action.payload]};
         default:
             return state;
@@ -42,28 +43,28 @@ const itemReducers = (state = initialState, action) => {
 export default itemReducers;
 
 // Actions
-export function itemsHasError (bool) {
+export function itemsHasError(bool) {
     return {
         type: ITEMS_HAS_ERROR,
         hasError: bool
     };
 }
 
-export function itemsIsLoading (bool) {
+export function itemsIsLoading(bool) {
     return {
         type: ITEMS_IS_LOADING,
         isLoading: bool
     };
 }
 
-export function itemsFetchDataSuccess (items) {
+export function itemsFetchDataSuccess(items) {
     return {
         type: ITEMS_FETCH_DATA_SUCCESS,
         items
     };
 }
 
-export function itemAdd (payload) {
+export function itemAdd(payload) {
     return {
         type: ADD_ITEM,
         payload
@@ -77,7 +78,7 @@ export function addItem(name) {
         fetch(ITEMS_URL, {
             method: 'POST',
             body: JSON.stringify(item),
-            headers:{
+            headers: {
                 'Content-Type': 'application/json'
             }
         })
@@ -97,7 +98,7 @@ export function addItem(name) {
 }
 
 
-export function itemsFetchData (url) {
+export function itemsFetchData(url) {
     return (dispatch) => {
         dispatch(itemsIsLoading(true));
 
